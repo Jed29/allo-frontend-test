@@ -5,12 +5,25 @@
  */
 
 // Composables
-import { createRouter, createWebHistory } from 'vue-router/auto'
-import { routes } from 'vue-router/auto-routes'
+import { createRouter, createWebHistory } from 'vue-router'
+import RocketList from '../pages/RocketList.vue'
+import RocketDetail from '../pages/RocketDetail.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes,
+  routes: [
+    {
+      path: '/',
+      name: 'rocket-list',
+      component: RocketList
+    },
+    {
+      path: '/rocket/:id',
+      name: 'rocket-detail',
+      component: RocketDetail,
+      props: true
+    }
+  ]
 })
 
 // Workaround for https://github.com/vitejs/vite/issues/11804
